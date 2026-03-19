@@ -32,6 +32,12 @@ function main() {
     return;
   }
 
+  if (!fs.statSync(file).isFile()) {
+    exitWithError('Source path is not a file.');
+
+    return;
+  }
+
   try {
     const destinationExists = fs.existsSync(moveTo);
     const isDirectoryTarget =
